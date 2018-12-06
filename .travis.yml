@@ -1,0 +1,16 @@
+
+language: minimal
+
+services:
+  - docker
+
+env:
+  # Bring up a basic test within or between containers:
+  - PTI_MODE=OneContainer
+  - PTI_MODE=TwoContainers
+
+  # Mount the logs from outside the container:
+  - PTI_MOUNT_LOGS=ExternalLogs
+
+script:
+  - ./._run_ci.sh
