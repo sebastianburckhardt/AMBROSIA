@@ -5,12 +5,14 @@ services:
   - docker
 
 env:
-  # Bring up a basic test within or between containers:
-  - PTI_MODE=OneContainer
-  - PTI_MODE=TwoContainers
+  global:
+    # Mount the logs from outside the container:
+    - PTI_MOUNT_LOGS=ExternalLogs
 
-  # Mount the logs from outside the container:
-  - PTI_MOUNT_LOGS=ExternalLogs
+  matrix:    
+    # Bring up a basic test within or between containers:
+    - PTI_MODE=OneContainer  
+    - PTI_MODE=TwoContainers 
 
 script:
   - ./._run_ci.sh
