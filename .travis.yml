@@ -15,4 +15,11 @@ env:
     - PTI_MODE=TwoContainers 
 
 script:
-  - ./._run_ci.sh
+# Need to remove the dependence on Azure Tables /
+# AZURE_STORAGE_CONN_STRING if we want to do full CI in a public
+# context (or find some way to use an account without leaking its auth
+# info).
+#   - ./._run_ci.sh
+
+# In the meantime, we can just make sure the images build:
+   - ./build_docker_images.sh
